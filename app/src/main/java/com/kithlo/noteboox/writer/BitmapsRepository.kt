@@ -23,7 +23,9 @@ class BitmapsRepository(
     init {
         scope.launch {
             channel.receiveAsFlow().collect { runnable ->
-                runnable.run()
+                withContext(Dispatchers.IO) {
+                    runnable.run()
+                }
             }
         }
     }

@@ -15,6 +15,9 @@ import com.kithlo.noteboox.common.FileSystem
 import com.kithlo.noteboox.common.FileTreeViewModel
 import com.kithlo.noteboox.data.file.LeafNode
 import com.kithlo.noteboox.databinding.FragmentWriterBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class WriterFragment : Fragment(R.layout.fragment_writer) {
 
@@ -168,7 +171,11 @@ class WriterFragment : Fragment(R.layout.fragment_writer) {
     private fun stopEditing() {
         binding.scribbleView.pause()
         bitmapsRepository.stop()
-        fileTreeModel.save()
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                fileTreeModel.save()
+            }
+        }
         (requireActivity() as MainActivity).shouldAllowBack = true
     }
 
