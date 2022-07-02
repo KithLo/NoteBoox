@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="paging"
+            type="com.kithlo.noteboox.common.Paging" />
+
+        <variable
+            name="disabled"
+            type="Boolean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="PxUsage,ContentDescription,UselessParent">
+
+        <RelativeLayout
+            android:layout_width="440px"
+            android:layout_height="120px"
+            android:layout_centerInParent="true">
+
+            <include
+                layout="@layout/component_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{() -> paging.goBackward()}"
+                android:clickable="@{paging.canGoBackward &amp;&amp; disabled != true}"
+                app:color="@{paging.canGoBackward &amp;&amp; disabled != true ? @color/black : @color/light_gray}"
+                app:imageResource="@{@drawable/ic_arrow_back}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingBottom="4px"
+                android:text="@{paging.text}"
+                android:textSize="40px" />
+
+            <include
+                layout="@layout/component_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{() -> paging.goForward()}"
+                android:clickable="@{paging.canGoForward &amp;&amp; disabled != true}"
+                app:color="@{paging.canGoForward &amp;&amp; disabled != true ? @color/black : @color/light_gray}"
+                app:imageResource="@{@drawable/ic_arrow_forward}" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

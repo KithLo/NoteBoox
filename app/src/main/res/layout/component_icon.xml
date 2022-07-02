@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="PxUsage,ContentDescription">
+
+    <data>
+
+        <variable
+            name="imageResource"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="color"
+            type="int" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="64px"
+            android:layout_height="64px"
+            android:layout_margin="16px"
+            android:src="@{imageResource}"
+            android:tint="@{color != 0 ? color : @color/black}"
+            tools:ignore="UseAppTint" />
+    </FrameLayout>
+</layout>

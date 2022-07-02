@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="kotlin.jvm.functions.Function1" />
+
+        <import type="kotlin.Unit" />
+
+        <import type="com.kithlo.noteboox.data.file.Node" />
+
+        <variable
+            name="onClick"
+            type="Function1&lt;Node, Unit>" />
+
+        <variable
+            name="onSelect"
+            type="Function1&lt;Node, Unit>" />
+
+        <variable
+            name="entry"
+            type="com.kithlo.noteboox.data.file.Node" />
+
+        <variable
+            name="selected"
+            type="Boolean" />
+
+        <variable
+            name="canSelect"
+            type="Boolean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="152px"
+        android:onClick="@{() -> onClick.invoke(entry)}"
+        android:visibility="@{entry.icon == 0 ? View.GONE : View.VISIBLE}"
+        tools:ignore="PxUsage,ContentDescription">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="64px"
+            android:layout_height="64px"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="48px"
+            android:layout_marginEnd="48px"
+            app:imageResource="@{entry.icon}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/icon">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:text="@{entry.name}"
+                android:textColor="@color/black"
+                android:textSize="40px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="84px"
+                android:text="@{entry.description}"
+                android:textColor="@color/dark_gray"
+                android:textSize="32px" />
+
+            <RelativeLayout
+                android:layout_width="96px"
+                android:layout_height="96px"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="32px"
+                android:onClick="@{() -> onSelect.invoke(entry)}"
+                android:padding="16px"
+                android:visibility="@{canSelect ? View.VISIBLE : View.GONE}">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@{selected ? @drawable/ic_check_circle : @drawable/ic_radio_button_unchecked}" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

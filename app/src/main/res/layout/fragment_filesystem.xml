@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.kithlo.noteboox.filesystem.FilesystemViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription,PxUsage">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/top_bar"
+                android:layout_width="match_parent"
+                android:layout_height="120px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:onClick="@{() -> viewModel.onBack()}"
+                    app:imageResource="@{@drawable/ic_arrow_back}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32px"
+                    android:layout_weight="1"
+                    android:text="Notes"
+                    android:textColor="@color/black"
+                    android:textSize="64px" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.onCreateFile()}"
+                    app:imageResource="@{@drawable/ic_add}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.onCreateFolder()}"
+                    app:imageResource="@{@drawable/ic_create_new_folder}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    app:imageResource="@{@drawable/ic_settings}" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/breadcrumb"
+                android:layout_width="match_parent"
+                android:layout_height="120px"
+                android:orientation="horizontal"
+                android:paddingHorizontal="32px"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <include layout="@layout/component_divider" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[0]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[0])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[1]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[1])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[2]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[2])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[3]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[3])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[4]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[4])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[5]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[5])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[6]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[6])}" />
+
+            <include
+                layout="@layout/filesystem_entry"
+                app:canSelect="@{!viewModel.canPaste}"
+                app:entry="@{viewModel.currentList[7]}"
+                app:onClick="@{viewModel.onClickEntry}"
+                app:onSelect="@{viewModel.onSelectEntry}"
+                app:selected="@{viewModel.selected.contains(viewModel.currentList[7])}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/component_paging"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:paging="@{viewModel.paging}" />
+
+            <include layout="@layout/component_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:clickable="@{viewModel.canCancel}"
+                    android:onClick="@{() -> viewModel.onCancel()}"
+                    app:color="@{viewModel.canCancel ? @color/black : @color/light_gray}"
+                    app:imageResource="@{@drawable/ic_close}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:clickable="@{viewModel.canSelectAll}"
+                    android:onClick="@{() -> viewModel.onSelectAll()}"
+                    app:color="@{viewModel.canSelectAll ? @color/black : @color/light_gray}"
+                    app:imageResource="@{@drawable/ic_select_all}" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:layout_weight="1"
+                    android:text='@{viewModel.canPaste ? viewModel.modifyAction.text : viewModel.selectedCount + "/" + viewModel.list.size() + " selected"}'
+                    android:textSize="40px" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.onRename()}"
+                    android:visibility="@{viewModel.canPerformSingleAction ? View.VISIBLE : View.GONE}"
+                    app:imageResource="@{@drawable/ic_drive_file_rename_outline}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.onMove()}"
+                    android:visibility="@{viewModel.canPerformMultipleAction ? View.VISIBLE : View.GONE}"
+                    app:imageResource="@{@drawable/ic_content_cut}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.onCopy()}"
+                    android:visibility="@{viewModel.canPerformMultipleAction ? View.VISIBLE : View.GONE}"
+                    app:imageResource="@{@drawable/ic_content_copy}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.onRemove()}"
+                    android:visibility="@{viewModel.canPerformMultipleAction ? View.VISIBLE : View.GONE}"
+                    app:imageResource="@{@drawable/ic_delete}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:onClick="@{() -> viewModel.executeModifyAction()}"
+                    android:visibility="@{viewModel.canPaste ? View.VISIBLE : View.GONE}"
+                    app:imageResource="@{@drawable/ic_content_paste}" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <include
+            layout="@layout/component_input_modal"
+            app:modal="@{viewModel.createFileModal}" />
+
+        <include
+            layout="@layout/component_input_modal"
+            app:modal="@{viewModel.createFolderModal}" />
+
+        <include
+            layout="@layout/component_input_modal"
+            app:modal="@{viewModel.renameModal}" />
+
+        <include
+            layout="@layout/component_text_modal"
+            app:modal="@{viewModel.removeModal}" />
+
+        <include
+            layout="@layout/component_text_modal"
+            app:modal="@{viewModel.exitModal}" />
+
+    </RelativeLayout>
+</layout>

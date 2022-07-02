@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.kithlo.noteboox.writer.WriterViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription,PxUsage,LabelFor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:visibility="@{viewModel.editing ? View.GONE : View.VISIBLE}"
+                    android:onClick="@{() -> viewModel.onBack()}"
+                    app:imageResource="@{@drawable/ic_arrow_back}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:visibility="@{viewModel.editing ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> viewModel.onDiscard()}"
+                    app:imageResource="@{@drawable/ic_close}" />
+
+                <EditText
+                    android:id="@+id/title_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32px"
+                    android:layout_weight="1"
+                    android:enabled="@{viewModel.editing}"
+                    android:text="@={viewModel.title}"
+                    android:imeOptions="actionDone"
+                    android:importantForAutofill="no"
+                    android:textColor="@color/black"
+                    android:textSize="64px"
+                    android:inputType="text" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:visibility="@{viewModel.editing ? View.VISIBLE : View.GONE}"
+                    android:onClick="@{() -> viewModel.onSave()}"
+                    app:imageResource="@{@drawable/ic_check}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32px"
+                    android:visibility="@{viewModel.editing ? View.GONE : View.VISIBLE}"
+                    android:onClick="@{() -> viewModel.onEdit()}"
+                    app:imageResource="@{@drawable/ic_edit}" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80px" />
+
+            <include layout="@layout/component_divider" />
+
+            <com.kithlo.noteboox.scribble.ScribbleVIew
+                android:id="@+id/scribble_view"
+                android:layout_width="1404px"
+                android:layout_height="1404px" />
+
+            <include layout="@layout/component_divider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="@{viewModel.canAdd}"
+                    android:onClick="@{() -> viewModel.onAdd()}"
+                    app:color="@{viewModel.canAdd ? @color/black : @color/light_gray}"
+                    app:imageResource="@{@drawable/ic_add}" />
+
+                <include
+                    layout="@layout/component_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32px"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="@{viewModel.canRemove}"
+                    android:onClick="@{() -> viewModel.onRemove()}"
+                    app:color="@{viewModel.canRemove ? @color/black : @color/light_gray}"
+                    app:imageResource="@{@drawable/ic_delete}" />
+
+                <include
+                    layout="@layout/component_paging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="256px"
+                    app:disabled="@{viewModel.editing}"
+                    app:paging="@{viewModel.paging}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/component_text_modal"
+            app:modal="@{viewModel.removeModal}" />
+
+    </RelativeLayout>
+</layout>

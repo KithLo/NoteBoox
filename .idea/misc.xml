@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/background_button_solid.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/button_background.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1925" />
+        <entry key="app/src/main/res/drawable/ic_baseline_create_new_folder_24.xml" value="0.1925" />
+        <entry key="app/src/main/res/drawable/ic_check_circle.xml" value="0.2985" />
+        <entry key="app/src/main/res/drawable/ic_create_new_folder.xml" value="0.2985" />
+        <entry key="app/src/main/res/drawable/ic_folder.xml" value="0.2985" />
+        <entry key="app/src/main/res/drawable/ic_text_snippet.xml" value="0.2985" />
+        <entry key="app/src/main/res/drawable/modal_background.xml" value="0.2315" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.57190357439734" />
+        <entry key="app/src/main/res/layout/component_breadcrumb_item.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/component_divider.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/component_icon.xml" value="0.184375" />
+        <entry key="app/src/main/res/layout/component_input_modal.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/component_modal.xml" value="0.225" />
+        <entry key="app/src/main/res/layout/component_paging.xml" value="0.23834196891191708" />
+        <entry key="app/src/main/res/layout/component_text_modal.xml" value="0.22395833333333334" />
+        <entry key="app/src/main/res/layout/divider.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/filesystem_entry.xml" value="0.184375" />
+        <entry key="app/src/main/res/layout/filesystem_entry_list.xml" value="0.3572916666666667" />
+        <entry key="app/src/main/res/layout/fragment_filesystem.xml" value="0.225" />
+        <entry key="app/src/main/res/layout/fragment_writer.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/icon_button.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/view_file_entry.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/view_filesystem_entry.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/view_icon.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/menu/top_app_bar.xml" value="0.184375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2485" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
